@@ -2,6 +2,8 @@ import os, subprocess, sys
 from google import genai
 
 k = os.environ.get('GOOGLE_API_KEY')
+if not k:
+    sys.exit("ERROR: GOOGLE_API_KEY is not set. Export your Google AI Studio key first.")
 # CRITICAL: Force api_version='v1' to resolve the 404 Not Found error
 client = genai.Client(api_key=k, http_options={'api_version': 'v1'})
 
